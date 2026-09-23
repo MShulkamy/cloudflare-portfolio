@@ -9,6 +9,7 @@ No servers to manage, no frameworks to learn — just HTML, CSS, JavaScript and 
 [![Cloudflare D1](https://img.shields.io/badge/Cloudflare-D1-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/d1/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0E7C66?style=for-the-badge)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-2563EB?style=for-the-badge)](CONTRIBUTING.md)
+[![CI](https://github.com/MShulkamy/cloudflare-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/MShulkamy/cloudflare-portfolio/actions/workflows/ci.yml)
 
 ### ▶ [Try the live demo](https://cloudflare-portfolio-d49.pages.dev)
 

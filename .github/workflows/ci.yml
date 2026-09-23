@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check JavaScript syntax
+        run: |
+          set -euo pipefail
+          fail=0
+          while IFS= read -r file; do
+            case "$file" in
+              ./functions/*)
+                # Pages Functions are ES modules, so check them as .mjs
+                tmp="$(mktemp --suffix=.mjs)"
+                cp "$file" "$tmp"
+                node --check "$tmp" || fail=1
+                rm -f "$tmp"
+                ;;
+              *)
+                node --check "$file" || fail=1
+                ;;
+            esac
+          done < <(find . -name '*.js' \
+            -not -path './node_modules/*' \
+            -not -path './vendor/*' \
+            -not -path './dist/*')
+          exit $fail
+
+      - name: Validate JSON files
+        run: |
+          set -euo pipefail
+          find . -name '*.json' -not -path './node_modules/*' -not -path './dist/*' -print0 |
+          while IFS= read -r -d '' file; do
+            node -e "JSON.parse(require('fs').readFileSync(process.argv[1], 'utf8'))" "$file"
+          done
+          echo "All JSON files parse."
+
+      - name: Verify the deploy would not leak source files
+        run: node scripts/deploy.js --check
+
+      - name: Scan for accidentally committed secrets
+        run: |
+          set -euo pipefail
+          pattern='(gho_[A-Za-z0-9]{30,}|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|sk-[A-Za-z0-9]{32,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----)'
+          if grep -rInE "$pattern" . \
+              --exclude-dir=node_modules \
+              --exclude-dir=.git \
+              --exclude-dir=dist; then
+            echo "::error::Possible secret found in the repository."
+            exit 1
+          fi
+          echo "No secrets detected."

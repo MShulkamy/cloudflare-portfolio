@@ -1,12 +1,17 @@
 #!/usr/bin/env node
 // scripts/deploy.js
 // ============================================================
-//  نشر آمن للـ Pages:
-//  1) ينسخ الملفات العامة فقط إلى dist/ (مجلد نظيف)
-//  2) يفحص أمنياً إن مفيش أي ملف تطوير اتسرب
-//  3) ينشر dist/ على Cloudflare Pages
+//  Safe deploy to Cloudflare Pages.
 //
-//  الاستخدام:  npm run deploy   (أو node scripts/deploy.js)
+//  1. Stages only the public files into a clean dist/ folder.
+//  2. Runs a security check: if any development file leaked into
+//     dist/, the deploy is aborted before anything is published.
+//  3. Deploys dist/ with Wrangler.
+//
+//  Usage:
+//    node scripts/deploy.js            # stage, check, deploy
+//    node scripts/deploy.js --check    # stage + check only (used by CI)
+//    node scripts/deploy.js --project my-pages-project
 // ============================================================
 
 const fs = require('fs');
@@ -15,9 +20,12 @@ const { spawnSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
-const PROJECT = 'portfolio';
 
-// الملفات/المجلدات العامة الوحيدة اللي بيتنشروا (أي حاجة غيرها ملهاش دعوة)
+const argv = process.argv.slice(2);
+const CHECK_ONLY = argv.includes('--check');
+
+// Files and folders that are safe to publish. Anything not listed here
+// never reaches the public site.
 const PUBLIC = [
     'index.html',
     '404.html',
@@ -29,13 +37,15 @@ const PUBLIC = [
     'vendor',
     'assets',
     'dashboard',
-    'functions',       // لازم تتنشر عشان الـ API
-    '_headers',        // ترويسات الأمان
+    'functions',       // required: this is the API
+    '_headers',        // security headers
     'robots.txt',
     'sitemap.xml'
 ];
 
-// لو أي حاجة من دول ظهرت في dist → نوقف فوراً (فشل أمني)
+// If any of these appear in dist/, the deploy is aborted. A misconfigured
+// static host will happily serve your source files, so this is the last
+// line of defence.
 const FORBIDDEN = [
     'wrangler.toml',
     'package.json',
@@ -44,11 +54,30 @@ const FORBIDDEN = [
     'scripts',
     'node_modules',
     'README.md',
+    'CONTRIBUTING.md',
+    'CUSTOMIZE.md',
+    'LICENSE',
     '.git',
+    '.github',
     '.wrangler',
     '.env',
-    'Your-Portfolio'
+    '.dev.vars'
 ];
+
+/** Reads `name = "..."` from wrangler.toml so the project name stays in sync. */
+function projectName() {
+    const argIndex = argv.indexOf('--project');
+    if (argIndex !== -1 && argv[argIndex + 1]) return argv[argIndex + 1];
+
+    try {
+        const toml = fs.readFileSync(path.join(ROOT, 'wrangler.toml'), 'utf8');
+        const match = toml.match(/^\s*name\s*=\s*["']([^"']+)["']/m);
+        if (match) return match[1];
+    } catch (err) {
+        // fall through to the default
+    }
+    return 'portfolio';
+}
 
 function copy(src, dest) {
     const st = fs.statSync(src);
@@ -62,7 +91,7 @@ function copy(src, dest) {
     }
 }
 
-// 1) staging نظيف
+// 1) Clean staging
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
 
@@ -78,25 +107,30 @@ for (const item of PUBLIC) {
 }
 console.log('Staged ' + copied + ' entries -> dist/');
 
-// 2) فحص أمني
+// 2) Security check
 const leaked = FORBIDDEN.filter(function (f) { return fs.existsSync(path.join(DIST, f)); });
 if (leaked.length) {
     console.error('SECURITY ABORT — forbidden files found in dist/: ' + leaked.join(', '));
     process.exit(1);
 }
 if (!fs.existsSync(path.join(DIST, 'index.html'))) {
-    console.error('ABORT — dist/index.html missing');
+    console.error('ABORT — dist/index.html is missing');
     process.exit(1);
 }
 if (!fs.existsSync(path.join(DIST, 'functions', 'api', '[[route]].js'))) {
-    console.error('ABORT — functions/api/[[route]].js missing (API will break)');
+    console.error('ABORT — functions/api/[[route]].js is missing (the API would break)');
     process.exit(1);
 }
-console.log('Security check: clean ✓');
+console.log('Security check: clean');
 
-// 3) النشر
+if (CHECK_ONLY) {
+    console.log('--check passed — skipping deploy.');
+    process.exit(0);
+}
+
+// 3) Deploy
 const args = ['wrangler', 'pages', 'deploy', 'dist',
-    '--project-name', PROJECT,
+    '--project-name', projectName(),
     '--branch', 'main',
     '--commit-dirty=true'];
 
