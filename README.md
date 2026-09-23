@@ -10,6 +10,8 @@ No servers to manage, no frameworks to learn — just HTML, CSS, JavaScript and 
 [![License: MIT](https://img.shields.io/badge/License-MIT-0E7C66?style=for-the-badge)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-2563EB?style=for-the-badge)](CONTRIBUTING.md)
 
+### ▶ [Try the live demo](https://cloudflare-portfolio-d49.pages.dev)
+
 </div>
 
 ---
@@ -236,6 +238,10 @@ In short:
 ## Contributing
 
 Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
+
+## Related projects
+
+- **[Mizan](https://github.com/MShulkamy/mizan)** — an offline-first personal finance tracker built with Flutter, Riverpod and sqflite.
 
 ## License
 
