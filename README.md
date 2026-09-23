@@ -13,6 +13,8 @@ No servers to manage, no frameworks to learn — just HTML, CSS, JavaScript and 
 
 ### ▶ [Try the live demo](https://cloudflare-portfolio-d49.pages.dev)
 
+<img src="screenshots/dashboard-demo.gif" alt="Admin dashboard walkthrough" width="720" />
+
 </div>
 
 ---
