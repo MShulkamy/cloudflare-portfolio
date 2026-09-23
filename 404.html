@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.css?v=20260912">
+    <link rel="icon" href="/assets/favicon.svg?v=3" type="image/svg+xml">
+    <style>
+        body {
+            background: #0b0e14;
+            background-image: radial-gradient(900px 500px at 20% 0%, rgba(59, 130, 246, 0.18), transparent),
+                              radial-gradient(700px 420px at 85% 110%, rgba(139, 92, 246, 0.15), transparent);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9aa4b2;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+        .code {
+            font-size: 110px;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .btn-glow {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border: 0;
+            color: #fff;
+            font-weight: 600;
+        }
+        .btn-glow:hover { color: #fff; opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="text-center px-4">
+        <div class="code">404</div>
+        <h1 class="h4 text-white fw-bold mt-2 mb-1">Page Not Found</h1>
+        <p class="small mb-1">الصفحة اللي بتدور عليها مش موجودة — يمكن اتنقلت أو الرابط غلط.</p>
+        <p class="small mb-4">The page you are looking for doesn't exist or has been moved.</p>
+        <a href="/" class="btn btn-glow rounded-pill px-4 py-2">
+            <i class="bi bi-house-door me-2"></i>Back to Home
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<section id="reviews" class="reviews-section py-5 position-relative">
+    <div class="container">
+        
+        <div class="text-center mb-5">
+            <h6 class="text-primary fw-bold letter-spacing-2 text-uppercase mb-2" data-i18n="reviewsSubtitle">TESTIMONIALS</h6>
+            <h2 class="display-5 fw-bold" data-i18n="reviewsTitle">What People Say</h2>
+            <div class="heading-line mx-auto"></div>
+        </div>
+
+        <div class="row g-4 justify-content-center" id="reviews-grid">
+            <div class="text-center w-100 text-muted py-5">Loading Reviews...</div>
+        </div>
+
+        <div class="text-center mt-5">
+            <button class="btn btn-primary btn-lg rounded-pill px-5 shadow-glow" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <i class="bi bi-chat-left-text me-2"></i> <span data-i18n="leaveFeedback">Leave Feedback</span>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal p-3">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-white">Share Your Feedback</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-4">
+                    <form id="feedbackForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control custom-input" id="f-name" placeholder="Your Name *" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control custom-input" id="f-email" placeholder="Email">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control custom-input" id="f-company" placeholder="Company">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control custom-input" id="f-role" placeholder="Your Role">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="text-muted small mb-2 d-block">Rating</label>
+                                <div class="rating-stars-input d-flex gap-2" id="star-rating-container">
+                                    <i class="bi bi-star fs-3 pointer-cursor" data-value="1"></i>
+                                    <i class="bi bi-star fs-3 pointer-cursor" data-value="2"></i>
+                                    <i class="bi bi-star fs-3 pointer-cursor" data-value="3"></i>
+                                    <i class="bi bi-star fs-3 pointer-cursor" data-value="4"></i>
+                                    <i class="bi bi-star fs-3 pointer-cursor" data-value="5"></i>
+                                </div>
+                                <input type="hidden" id="f-rating" value="5">
+                            </div>
+
+                            <div class="col-12">
+                                <textarea class="form-control custom-input" id="f-text" rows="4" placeholder="Your feedback... *" required></textarea>
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="btn btn-primary w-100 rounded-pill py-2">
+                                    <i class="bi bi-send me-2"></i> Submit Feedback
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

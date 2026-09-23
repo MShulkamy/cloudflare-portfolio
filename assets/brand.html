@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+html, body { margin: 0; width: 100%; height: 100%; }
+body {
+    background: #0b0e14;
+    background-image:
+        radial-gradient(900px 500px at 15% 0%, rgba(59, 130, 246, 0.28), transparent),
+        radial-gradient(800px 480px at 88% 108%, rgba(139, 92, 246, 0.22), transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow: hidden;
+}
+.card { text-align: center; }
+.kicker {
+    color: #7cb2ff;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+h1 { color: #ffffff; font-size: 86px; margin: 0; font-weight: 800; letter-spacing: -1px; }
+.grad {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.sub { color: #9aa4b2; font-size: 33px; margin-top: 18px; font-weight: 300; }
+.bar { width: 130px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); margin: 30px auto 0; }
+.url { color: #4b5563; font-size: 22px; margin-top: 30px; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+    <div class="card">
+        <div class="kicker">Portfolio</div>
+        <h1>Your <span class="grad">Name</span></h1>
+        <div class="sub">Software Engineer &bull; Web Developer</div>
+        <div class="bar"></div>
+        <div class="url">portfolio.pages.dev</div>
+    </div>
+</body>
+</html>

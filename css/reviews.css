@@ -1,0 +1,138 @@
+/* --- 1. تصميم الكارت (Glassmorphism + Borders) --- */
+.review-card {
+    /* خلفية زجاجية داكنة */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* حدود واضحة (السر هنا) */
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    
+    border-radius: 20px;
+    padding: 30px;
+    height: 100%; /* لضمان تساوي الطول */
+    position: relative;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* في الوضع الفاتح */
+[data-bs-theme="light"] .review-card {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* تأثير الهوفر */
+.review-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color); /* الحدود تتلون عند الوقوف عليها */
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* --- 2. محتوى الكارت --- */
+.stars {
+    color: #ffc107;
+    margin-bottom: 15px;
+}
+
+.quote-icon {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    opacity: 0.2; /* شفافية عشان ميتداخلش مع النص */
+}
+
+[dir="rtl"] .quote-icon {
+    right: auto;
+    left: 25px;
+    transform: scaleX(-1);
+}
+
+.review-text {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1; /* عشان يدفع معلومات الشخص للأسفل */
+}
+
+[data-bs-theme="light"] .review-text {
+    color: #555;
+}
+
+/* معلومات الشخص */
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #2563eb);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.reviewer-name {
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: #fff;
+}
+[data-bs-theme="light"] .reviewer-name { color: #000; }
+
+.reviewer-job {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+[data-bs-theme="light"] .reviewer-job { color: #777; }
+
+
+/* --- 3. تصميم المودال والفورم --- */
+.custom-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 12px;
+    padding: 12px;
+}
+.custom-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+    color: #fff;
+    box-shadow: none;
+}
+.pointer-cursor { cursor: pointer; transition: transform 0.2s; }
+.pointer-cursor:hover { transform: scale(1.2); }
+.custom-modal { background-color: #0b0d1b; border: 1px solid rgba(255,255,255,0.1); }
+
+
+/* --- 4. الأنيميشن (Keyframes) --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* كلاس الأنيميشن الافتراضي (هياخد Delay من الجافاسكربت) */
+.review-item {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}

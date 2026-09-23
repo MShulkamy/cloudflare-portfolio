@@ -1,0 +1,72 @@
+/* --- Contact Section --- */
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-decoration: none; /* لإلغاء خط الرابط */
+}
+
+[data-bs-theme="light"] .contact-card {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.contact-icon-box {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 5px;
+    transition: color 0.3s;
+}
+
+[data-bs-theme="light"] .contact-icon-box {
+    color: #333;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color) !important;
+    background: rgba(59, 130, 246, 0.1) !important;
+}
+
+.contact-card:hover i {
+    color: var(--primary-color) !important;
+}
+
+.contact-label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.external-link-icon {
+    font-size: 0.9rem;
+    opacity: 0.5;
+    margin-top: 5px;
+}
+
+/* --- Footer Section --- */
+.footer-line {
+    border-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+[data-bs-theme="light"] .footer-line {
+    border-color: rgba(0, 0, 0, 0.1);
+}

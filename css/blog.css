@@ -1,0 +1,250 @@
+/* css/blog.css — المدونة + قسم أحدث المقالات */
+
+/* ---------- شبكة الكروت ---------- */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.blog-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(79, 172, 254, 0.5);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    color: inherit;
+}
+
+.blog-card-cover {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+    background: #0f172a;
+}
+.blog-card-cover-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: #4facfe;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.blog-card-body {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.blog-card-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.blog-card h3 {
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.45;
+}
+
+.blog-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin: 0;
+    flex: 1;
+    line-height: 1.7;
+}
+
+.blog-card-more {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.blog-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.blog-tag {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.15);
+    color: #7db4ff;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.blog-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 0;
+    color: var(--text-muted);
+}
+
+/* ---------- صفحة المدونة الكاملة ---------- */
+.blog-page {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    min-height: 100vh;
+}
+
+.blog-header {
+    margin-bottom: 44px;
+}
+.blog-header h1 {
+    font-weight: 800;
+}
+
+.blog-footer {
+    padding: 30px 0 40px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ---------- صفحة المقالة ---------- */
+.post-article {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post-back {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.post-header h1 {
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 24px;
+}
+
+.post-cover {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 28px;
+}
+
+.post-body {
+    font-size: 1.05rem;
+    line-height: 1.9;
+}
+.post-body h2 {
+    font-weight: 700;
+    margin: 2.2rem 0 1rem;
+}
+.post-body h3 {
+    font-weight: 700;
+    margin: 1.8rem 0 0.8rem;
+}
+.post-body p {
+    margin-bottom: 1.1rem;
+}
+.post-body a {
+    color: var(--primary-color);
+}
+.post-body ul, .post-body ol {
+    margin-bottom: 1.1rem;
+    padding-inline-start: 1.6rem;
+}
+.post-body li {
+    margin-bottom: 0.4rem;
+}
+.post-body blockquote {
+    margin: 1.4rem 0;
+    padding: 10px 20px;
+    border-inline-start: 4px solid var(--primary-color);
+    background: rgba(59, 130, 246, 0.07);
+    border-radius: 8px;
+    color: var(--text-muted);
+}
+.post-body pre {
+    direction: ltr;
+    text-align: left;
+    background: #0d1117;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 18px;
+    border-radius: 12px;
+    overflow-x: auto;
+    margin: 1.4rem 0;
+}
+.post-body pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.9rem;
+    color: #e6edf3;
+    font-family: Consolas, Monaco, 'Courier New', monospace;
+}
+.post-body code {
+    background: rgba(110, 118, 129, 0.18);
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-family: Consolas, Monaco, 'Courier New', monospace;
+}
+.post-body img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+.post-body hr {
+    border-color: rgba(255, 255, 255, 0.12);
+    margin: 2rem 0;
+}
+
+/* ---------- توافق الوضع الفاتح ---------- */
+[data-bs-theme="light"] .blog-card {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="light"] .blog-card-cover-placeholder {
+    background: linear-gradient(135deg, #e2e8f0 0%, #f8fafc 100%);
+}
+[data-bs-theme="light"] .blog-tag {
+    background: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+}
+[data-bs-theme="light"] .post-body hr {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- قسم Teaser في الصفحة الرئيسية ---------- */
+.blog-teaser-section .heading-line {
+    width: 80px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--gradient-text);
+    margin-top: 16px;
+}

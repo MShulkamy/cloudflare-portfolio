@@ -1,0 +1,55 @@
+/* Hero Section Setup */
+.hero-section { padding-top: 80px; }
+
+/* Blob Animation */
+.blob-container { position: relative; display: inline-block; padding: 10px; z-index: 2; }
+
+.blob-border {
+    width: 400px; height: 400px;
+    padding: 8px;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph 8s ease-in-out infinite;
+    box-shadow: 0 10px 50px rgba(59, 130, 246, 0.4);
+    overflow: hidden;
+}
+
+.profile-img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: inherit; /* Takes shape of parent */
+}
+
+@keyframes morph {
+    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+/* Background Glow */
+.glow-spot {
+    position: absolute; width: 600px; height: 600px;
+    border-radius: 50%; filter: blur(140px); opacity: 0.15; z-index: 0; pointer-events: none;
+}
+.glow-blue { background: #3b82f6; top: -150px; right: -150px; }
+.glow-purple { background: #8b5cf6; bottom: -150px; left: -150px; }
+
+/* Responsive */
+@media (max-width: 991px) {
+    .blob-border { width: 280px; height: 280px; margin-top: 3rem; }
+    .hero-section { text-align: center; }
+}
+
+/* Typewriter Cursor */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--primary-color);
+    margin-left: 5px;
+    animation: blink 1s infinite;
+}
+
+/* حركة الوميض */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

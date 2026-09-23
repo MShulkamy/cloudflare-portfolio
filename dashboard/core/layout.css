@@ -1,0 +1,285 @@
+/* dashboard/core/layout.css
+   ============================================================
+   هيكل الداشبورد: سايدبار + توب بار + كروت + جداول
+   ============================================================ */
+
+:root {
+    --dash-bg: #0b0e14;
+    --dash-panel: #131822;
+    --dash-border: rgba(255, 255, 255, 0.08);
+    --dash-accent: #3b82f6;
+    --dash-sidebar-w: 240px;
+    --dash-text-muted: #9aa4b2;
+}
+
+body.dash-body {
+    background: var(--dash-bg);
+    min-height: 100vh;
+}
+
+/* ===== Sidebar ===== */
+#sidebar-root {
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    width: var(--dash-sidebar-w);
+    background: var(--dash-panel);
+    border-right: 1px solid var(--dash-border);
+    z-index: 1030;
+}
+
+.dash-sidebar-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.dash-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1.1rem 1rem;
+    border-bottom: 1px solid var(--dash-border);
+}
+
+.dash-brand i {
+    font-size: 1.5rem;
+    color: var(--dash-accent);
+}
+
+.dash-nav {
+    padding: 0.75rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    overflow-y: auto;
+}
+
+.dash-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.5rem;
+    color: var(--dash-text-muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+    border: 0;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dash-nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.dash-nav-link.active {
+    background: rgba(59, 130, 246, 0.15);
+    color: #7cb2ff;
+}
+
+.dash-nav-link i {
+    font-size: 1.05rem;
+}
+
+.dash-sidebar-footer {
+    margin-top: auto;
+    padding: 0.75rem 0.5rem;
+    border-top: 1px solid var(--dash-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+/* ===== Topbar ===== */
+#topbar-root {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1.25rem;
+    background: rgba(11, 14, 20, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--dash-border);
+    margin-left: var(--dash-sidebar-w);
+}
+
+/* ===== Main ===== */
+.dash-main {
+    margin-left: var(--dash-sidebar-w);
+    padding: 1.5rem;
+    max-width: 1200px;
+}
+
+.dash-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+/* ===== Cards ===== */
+.dash-card {
+    background: var(--dash-panel);
+    border: 1px solid var(--dash-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.dash-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--dash-border);
+    flex-wrap: wrap;
+}
+
+.dash-card-body {
+    padding: 1.25rem;
+}
+
+/* ===== Tables ===== */
+.dash-card .table {
+    --bs-table-bg: transparent;
+    margin-bottom: 0;
+}
+
+.dash-card .table thead th {
+    color: var(--dash-text-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom-color: var(--dash-border);
+    white-space: nowrap;
+}
+
+.dash-card .table td {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+}
+
+.table-row-actions {
+    display: flex;
+    gap: 0.35rem;
+    justify-content: flex-end;
+}
+
+/* ===== Badges ===== */
+.badge-soft-success { background: rgba(25, 135, 84, 0.18); color: #4ade80; }
+.badge-soft-warning { background: rgba(255, 193, 7, 0.15); color: #fbbf24; }
+.badge-soft-info    { background: rgba(13, 202, 240, 0.15); color: #38bdf8; }
+.badge-soft-muted   { background: rgba(255, 255, 255, 0.08); color: var(--dash-text-muted); }
+
+/* ===== Forms ===== */
+.form-label {
+    font-size: 0.85rem;
+    color: var(--dash-text-muted);
+}
+
+.form-text {
+    font-size: 0.78rem;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 991.98px) {
+    #sidebar-root {
+        transform: translateX(-100%);
+        transition: transform 0.2s ease;
+    }
+    body.sidebar-open #sidebar-root {
+        transform: translateX(0);
+    }
+    body.sidebar-open::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 1025;
+    }
+    #topbar-root,
+    .dash-main {
+        margin-left: 0;
+    }
+}
+
+/* ===== Icon Picker ===== */
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+    gap: 8px;
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 2px;
+}
+
+.icon-cell {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--dash-border);
+    border-radius: 0.5rem;
+    padding: 0.55rem 0.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--dash-text-muted);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.icon-cell:hover {
+    border-color: rgba(59, 130, 246, 0.6);
+    background: rgba(59, 130, 246, 0.08);
+    color: #fff;
+}
+
+.icon-cell.selected {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.16);
+    color: #fff;
+}
+
+.icon-cell-glyph {
+    font-size: 1.45rem;
+    line-height: 1;
+    height: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.icon-cell-glyph img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.icon-cell-name {
+    font-size: 0.67rem;
+    text-align: center;
+    line-height: 1.1;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.icon-tabs .btn {
+    font-size: 0.76rem;
+    padding: 0.2rem 0.6rem;
+}
+
+.icon-preview {
+    min-width: 44px;
+    justify-content: center;
+    display: flex;
+}
+
+/* ===== Scrollbar ===== */
+.dash-nav::-webkit-scrollbar { width: 6px; }
+.dash-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }

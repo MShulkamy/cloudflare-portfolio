@@ -1,0 +1,79 @@
+.heading-line {
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}
+
+/* 1. Skill Cards (Soft & Technical) */
+.skill-card {
+    background: rgba(255, 255, 255, 0.03); /* شفافية خفيفة جداً */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+[data-bs-theme="light"] .skill-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.15);
+}
+
+.icon-box-sm {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 2. Tools Icons Row */
+.tool-item {
+    width: 80px;
+    transition: transform 0.3s;
+}
+
+.tool-item:hover {
+    transform: translateY(-5px);
+}
+
+.tool-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px; /* حجم الأيقونة */
+    margin: 0 auto 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+[data-bs-theme="light"] .tool-icon {
+    background: #fff;
+    border-color: #dee2e6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.tool-item:hover .tool-icon {
+    border-color: var(--primary-color);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.tool-name {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}

@@ -1,0 +1,54 @@
+/* dashboard/auth/login.css
+   ============================================================
+   صفحة تسجيل الدخول — تصميم مستقل
+   ============================================================ */
+
+:root {
+    --dash-bg: #0b0e14;
+    --dash-panel: #131822;
+    --dash-border: rgba(255, 255, 255, 0.08);
+}
+
+body.login-body {
+    background: var(--dash-bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-image: radial-gradient(600px 300px at 50% 0%, rgba(59, 130, 246, 0.12), transparent);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    background: var(--dash-panel);
+    border: 1px solid var(--dash-border);
+    border-radius: 1rem;
+    padding: 2rem 1.75rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.login-logo {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 0.9rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(59, 130, 246, 0.15);
+    color: #7cb2ff;
+    font-size: 1.6rem;
+}
+
+.login-card .form-control {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.login-card .form-control:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.15);
+}

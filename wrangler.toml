@@ -1,0 +1,27 @@
+# Cloudflare Pages configuration — Portfolio + API
+#
+# 1. Change `name` to your Pages project name.
+# 2. Create the D1 database and paste its id below:
+#      npx wrangler d1 create portfolio-db
+# 3. (Optional) Create an R2 bucket to enable image uploads from the dashboard:
+#      npx wrangler r2 bucket create portfolio-images
+#
+# Values in [vars] are non-secret. Put secrets with `npx wrangler pages secret put`.
+
+name = "portfolio"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "dist"
+
+[vars]
+# Used to build links inside notifications and the email reply signature.
+SITE_NAME = "Your Name"
+SITE_URL = "https://your-project.pages.dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "portfolio-images"

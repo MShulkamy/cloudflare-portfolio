@@ -1,0 +1,31 @@
+:root {
+    /* Dark Mode (Default) */
+    --bg-body: #050511;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --primary-color: #3b82f6;
+    --gradient-text: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+}
+
+[data-bs-theme="light"] {
+    /* Light Mode */
+    --bg-body: #ffffff;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* Common Classes */
+.text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

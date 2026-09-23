@@ -1,0 +1,14 @@
+# Cloudflare Pages — exclude dev files from the published site
+node_modules
+functions
+db
+scripts
+.wrangler
+.git
+wrangler.toml
+package.json
+package-lock.json
+README.md
+.assetsignore
+*.cmd
+*.log

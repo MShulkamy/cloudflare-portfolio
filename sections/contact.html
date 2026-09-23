@@ -1,0 +1,59 @@
+<section id="contact" class="contact-section py-5 position-relative">
+    <div class="container">
+        
+        <div class="text-center mb-5">
+            <h6 class="text-primary fw-bold letter-spacing-2 text-uppercase mb-2" data-i18n="contactSubtitle">LET'S CONNECT</h6>
+            <h2 class="display-5 fw-bold" data-i18n="contactTitle">Get In Touch</h2>
+            <div class="heading-line mx-auto mb-3"></div>
+            <p class="text-muted lead mx-auto" style="max-width: 600px;" data-i18n="contactDesc">
+                Feel free to reach out for collaborations, opportunities, or just a friendly hello!
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center" id="contact-grid">
+            <div class="text-center w-100 text-muted py-5">Loading Links...</div>
+        </div>
+
+        <div class="text-center mt-5">
+            <button class="btn btn-primary btn-lg rounded-pill px-5 shadow-glow" data-bs-toggle="modal" data-bs-target="#messageModal">
+                <i class="bi bi-envelope-paper me-2"></i> <span data-i18n="sendMessage">Send Me a Message</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- مودال إرسال رسالة -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal p-3">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-white" data-i18n="messageTitle">Send Me a Message</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-4">
+                    <form id="messageForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control custom-input" id="m-name" placeholder="Your Name *" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control custom-input" id="m-email" placeholder="Your Email *" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control custom-input" id="m-subject" placeholder="Subject">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control custom-input" id="m-text" rows="5" placeholder="Your message... *" required></textarea>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="btn btn-primary w-100 rounded-pill py-2">
+                                    <i class="bi bi-send me-2"></i> Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,96 @@
+/* css/experience.css — Timeline الخبرات */
+
+.timeline {
+    position: relative;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+/* الخط الرأسي */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.55), rgba(139, 92, 246, 0.55));
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 0 2.4rem 2.2rem 0;
+}
+
+.timeline-item:nth-child(even) {
+    margin-left: 50%;
+    padding: 0 0 2.2rem 2.4rem;
+}
+
+/* النقطة */
+.timeline-dot {
+    position: absolute;
+    top: 8px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    right: auto;
+    left: -8px;
+}
+
+/* الكارت */
+.timeline-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.15rem 1.3rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.timeline-period {
+    display: inline-block;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #7cb2ff;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 999px;
+    padding: 0.15rem 0.7rem;
+    margin-bottom: 0.6rem;
+}
+
+/* الموبايل: كل حاجة على عمود واحد */
+@media (max-width: 767.98px) {
+    .timeline::before {
+        left: 9px;
+        transform: none;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 0 1.7rem 2.1rem;
+    }
+
+    .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 1px;
+        right: auto;
+    }
+}

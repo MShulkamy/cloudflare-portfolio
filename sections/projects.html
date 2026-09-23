@@ -1,0 +1,87 @@
+<section id="projects" class="projects-section py-5 position-relative">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h6 class="text-primary fw-bold letter-spacing-2 text-uppercase mb-2" data-i18n="projectsSubtitle">MY WORK</h6>
+            <h2 class="display-5 fw-bold" data-i18n="projectsTitle">Featured Projects</h2>
+            <div class="heading-line mx-auto"></div>
+        </div>
+
+        <div class="row g-4" id="projects-grid">
+            <div class="text-center w-100 text-muted py-5">Loading Projects...</div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ============================================================
+     Project Detail — full screen case study view
+     ============================================================ -->
+<div id="projectDetail" class="pd" aria-hidden="true">
+    <div class="pd__panel" role="dialog" aria-modal="true" aria-labelledby="pdTitle">
+
+        <!-- Top bar -->
+        <div class="pd__bar">
+            <button type="button" class="pd__back" id="pdClose" aria-label="Back">
+                <i class="bi bi-arrow-left"></i>
+                <span id="pdBackText">Back</span>
+            </button>
+
+            <div class="pd__bar-actions">
+                <a href="#" target="_blank" rel="noopener" id="btn-github" class="pd__btn pd__btn--code" aria-label="Source Code">
+                    <i class="devicon-github-original"></i>
+                    <span id="pdCodeText">Source Code</span>
+                </a>
+                <a href="#" target="_blank" rel="noopener" id="btn-demo" class="pd__btn pd__btn--live" aria-label="Live Demo">
+                    <i class="bi bi-rocket-takeoff-fill"></i>
+                    <span id="pdDemoText">Live Demo</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scrollable body -->
+        <div class="pd__scroll" id="pdScroll">
+            <div class="pd__inner">
+
+                <header class="pd__head">
+                    <h2 class="pd__title" id="pdTitle"></h2>
+                    <p class="pd__tagline" id="pdTagline"></p>
+                    <span class="pd__status" id="pdStatus"></span>
+                </header>
+
+                <div class="pd__tech" id="pdTech"></div>
+
+                <div class="pd__desc" id="pdDesc"></div>
+
+                <div class="pd__gallery-head">
+                    <h3 class="pd__gallery-title">
+                        <i class="bi bi-images"></i>
+                        <span id="pdGalleryText">Screenshots</span>
+                    </h3>
+                    <span class="pd__count" id="pdCount"></span>
+                </div>
+
+                <div class="pd__gallery" id="pdGallery"></div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ============================================================
+     Lightbox — view one screenshot large
+     ============================================================ -->
+<div id="pdLightbox" class="pdlb" aria-hidden="true">
+    <button type="button" class="pdlb__close" id="pdLbClose" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    <button type="button" class="pdlb__nav pdlb__nav--prev" id="pdLbPrev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+
+    <figure class="pdlb__stage" id="pdLbStage">
+        <img id="pdLbImg" class="pdlb__img" src="" alt="">
+    </figure>
+
+    <button type="button" class="pdlb__nav pdlb__nav--next" id="pdLbNext" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+    <div class="pdlb__counter" id="pdLbCounter"></div>
+</div>

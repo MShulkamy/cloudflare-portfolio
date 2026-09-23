@@ -1,0 +1,54 @@
+<section id="awards" class="awards-section py-5 position-relative">
+    <div class="container">
+        
+        <div class="text-center mb-5">
+            <h6 class="text-primary fw-bold letter-spacing-2 text-uppercase mb-2" data-i18n="awardsSubtitle">CREDENTIALS</h6>
+            <h2 class="display-5 fw-bold" data-i18n="awardsTitle">Certifications</h2>
+            <div class="heading-line mx-auto"></div>
+        </div>
+
+        <div class="row g-4" id="awards-grid">
+            <div class="text-center w-100 text-muted py-5">Loading Certifications...</div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="awardModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content custom-modal">
+                
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-gradient" id="awardModalLabel">...</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    
+                    <div class="mb-4 rounded-3 overflow-hidden shadow" style="background: #000;">
+                        <img id="awardModalImg" src="" class="d-block w-100" style="max-height: 400px; object-fit: contain;" alt="Certificate">
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        
+                        <span class="badge bg-warning text-dark px-3 py-2" id="awardModalDate">...</span>
+                        
+                        <div class="d-flex align-items-center gap-2 text-white">
+                            <i class="bi bi-building-check text-primary"></i>
+                            <span id="awardModalIssuer" class="fw-bold">...</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-muted" id="awardModalDesc" style="white-space: pre-line; line-height: 1.7;">...</p>
+                    
+                </div>
+
+                <div class="modal-footer border-0">
+                    <a href="#" target="_blank" id="awardModalLink" class="btn btn-primary rounded-pill px-4">
+                        <i class="bi bi-patch-check-fill me-2"></i> <span data-i18n="verifyBtn">Verify Credential</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

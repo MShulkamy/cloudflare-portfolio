@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack portfolio site with an admin dashboard — Cloudflare Pages, Functions and D1",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "wrangler pages dev . --port 8788",
+    "db:local": "wrangler d1 execute portfolio-db --local --file=db/schema.sql",
+    "db:remote": "wrangler d1 execute portfolio-db --remote --file=db/schema.sql",
+    "deploy": "node scripts/deploy.js",
+    "brand:logo": "node scripts/build-logo.mjs",
+    "brand:icons": "node scripts/build-icons.js",
+    "fonts": "node scripts/build-fonts.mjs"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "subset-font": "^2.7.0",
+    "wrangler": "^4.0.0"
+  }
+}

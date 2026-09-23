@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Wrangler
+.wrangler/
+.dev.vars
+
+# Build cache (font sources)
+scripts/.cache/
+
+# Deploy staging
+dist/
+
+# Env & secrets
+.env
+*.local
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
